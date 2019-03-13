@@ -19,5 +19,6 @@ Presaved code for HP CodeWars
 * `knap`: knapsack
 * `roman`: roman numerals
 * `sort`: custom sorting
+* `euler`: number theory
 
 I'll add more later.
