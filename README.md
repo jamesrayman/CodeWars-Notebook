@@ -1,6 +1,8 @@
 # CodeWars Notebook
 Presaved code for HP CodeWars
 
+This notebook is written specifically for Windows 10.
+
 # Commands
 * `n init x`: create subdirectories for `prob00` to `probx`
 * `n data path`: extract data files from `.\path\`
@@ -11,14 +13,15 @@ Presaved code for HP CodeWars
 * `n help`: print help file
 
 # Template additions
-* `date`: date helper class
+* `date`: dates
 * `seg`: segment tree
 * `maze`: maze solving
 * `geom`: geometry
 * `graph`: graph algorithms
-* `knap`: knapsack
+* `knapsack`: knapsack
 * `roman`: roman numerals
 * `sort`: custom sorting
 * `euler`: number theory
+* `string`: string algorithms
 
 I'll add more later.
