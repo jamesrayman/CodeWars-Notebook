@@ -23,5 +23,7 @@ This notebook is written specifically for Windows 10.
 * `sort`: custom sorting
 * `euler`: number theory
 * `string`: string algorithms
+* `ufds`: union find
+* `vector`: sequence algorithms
 
 I'll add more later.
