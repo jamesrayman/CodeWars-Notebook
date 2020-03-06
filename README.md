@@ -1,20 +1,21 @@
 # CodeWars Notebook
-Presaved code for HP CodeWars
 
-This notebook is written specifically for Windows 10.
+Presaved code for HP CodeWars.
 
 # Commands
-* `n init x`: create subdirectories for `prob00` to `probx`
-* `n data path`: extract data files from `.\path\`
-* `n cd x`: switch to subdirectory `probx`
-* `n submit [x]`: if `x` is given `n cd x`, clear `.\submit\` and add the current solution to that directory
-* `n test [x]`: if `x` is given `n cd x`, test the current problem, and, if it passes, `n submit`
-* `n new [x] ...`: if `x` is given `n cd x`, create a solution in the current directory with `...` as the template additions
-* `n help`: print help file
+
+* `cw i[nit] x`: create subdirectories for `prob00` to `probx`
+* `cw d[ata] path`: extract data files from `./path/`
+* `cw c[d]`: set directory to current directory
+* `cw p[wd]`: print directory
+* `cw e[dit] x`: edit `probx` 
+* `cw t[est] [x]`: test `probx`, clear `./done/` and move `probx` to that directory
+* `cw n[ew] x ...`: create a solution for `probx` with `...` as the notebook additions, and `cw e x`
+* `cw h[elp]`: print help file (not updated)
 
 # Template additions
+
 * `date`: dates
-* `seg`: segment tree
 * `maze`: maze solving
 * `geom`: geometry
 * `graph`: graph algorithms
@@ -25,5 +26,3 @@ This notebook is written specifically for Windows 10.
 * `string`: string algorithms
 * `ufds`: union find
 * `vector`: sequence algorithms
-
-I'll add more later.

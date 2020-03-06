@@ -1,0 +1,31 @@
+class Pair<T, U> implements Comparable<Pair<T, U>> {
+    public T first;
+    public U second;
+
+    public Pair () {}
+    public Pair (T t, U u) {
+        first = t;
+        second = u;
+    }
+
+    @Override
+    public int compareTo (Pair<T, U> other) {
+        if (((Comparable) first).compareTo(other.first) == 0)
+            return ((Comparable) second).compareTo(other.second);
+        else return ((Comparable) first).compareTo(other.first);
+    }
+
+    @Override
+    public boolean equals (Object other) {
+        if (other instanceof Pair) {
+            return 0 == compareTo(((Pair)other));
+        }
+        else return false;
+    }
+
+    @Override
+    public String toString () {
+        return first.toString() + " " + second.toString();
+    }
+}
+

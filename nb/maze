@@ -1,0 +1,67 @@
+class Maze {
+    public static int [] dx = { 0, -1, 0, 1 };
+    public static int [] dy = { 1, 0, -1, 0 };
+
+    public static int solve (char[][] board, char start, char end, String wall, char mark) {
+        int n = board.length;
+        int m = board[0].length;
+        
+        LinkedList<Integer> q = new LinkedList<>();
+
+        boolean [][] visited = new boolean[n][m];
+        int [][] dist = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                dist[i][j] = 10000000;
+                if (board[i][j] == start) {
+                    q.addLast(i);
+                    q.addLast(j);
+                    q.addLast(0);
+                }
+            }
+        }
+
+        int i = 0, j = 0, d = 0;
+
+        while (!q.isEmpty()) {
+            i = q.removeFirst();
+            j = q.removeFirst();
+            d = q.removeFirst();
+
+            if (i < 0 || j < 0 || i >= n || j >= m) continue;
+            if (wall.indexOf(board[i][j]) > -1) continue;
+            if (visited[i][j]) continue;
+            
+
+            visited[i][j] = true;
+            dist[i][j] = d;
+
+            if (board[i][j] == end) break; 
+
+            for (int a = 0; a < dx.length; a++) {
+                q.addLast(i + dx[a]);
+                q.addLast(j + dy[a]);
+                q.addLast(d+1);
+            }
+        }
+        if (board[i][j] != end) return -1;
+
+        while (board[i][j] != start) {
+            if (board[i][j] != end) board[i][j] = mark;
+
+            for (int a = 0; a < dx.length; a++) {
+                int ni = i - dx[a];
+                int nj = j - dy[a];
+
+                if (ni >= 0 && ni < n && nj >= 0 && nj < m && dist[i][j] - 1 == dist[ni][nj]) {
+                    i = ni;
+                    j = nj;
+                    break;
+                }
+            }
+        }
+
+        return d;
+    }
+}

@@ -1,0 +1,24 @@
+Commands 
+
+cw i[nit] x         create subdirectories for 'prob00' to 'probx' and set directory
+cw d[ata] path      extract data files from 'path'
+cw c[d]             set directory to current directory
+cw p[wd]            print directory
+cw e[dit] x         open 'probx'
+cw t[est] [x]       if 'x' is given 'cd x', test the current problem, clear './submit/' and move 'x' to that directory
+cw n[ew] x ...      if 'x' is given 'cd x', create a solution in the current directory with '...' as the notebook additions
+cw h[elp]           print help file
+
+Notebook additions
+
+date        dates
+maze        maze solving
+geom        geometry
+graph       graph algorithms
+knapsack    knapsack
+roman       roman numerals
+sort        custom sorting
+euler       number theory
+string      string algorithms
+ufds        union find
+vector      sequence algorithms

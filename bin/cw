@@ -1,0 +1,154 @@
+#!/usr/bin/env bash
+
+# Config:
+prob="prob%02d"
+prog="prob%02d"
+input="input.txt"
+output="output.txt"
+
+src_dir="$(realpath "$0" | xargs dirname | xargs dirname)"
+help="View help with 'cw help'."
+
+read -r cw_dir < "$src_dir/dat/cw_dir"
+
+if [[ $# -lt 1 ]]
+then
+    printf "No arguments provided. %s\n" "$help"
+    exit 1
+fi
+
+case "$1" in
+    i|init)
+        if [[ $# -lt 2 ]]
+        then
+            printf "Too few arguments provided. %s\n" "$help"
+            exit 1
+        fi
+
+        eval "cw cd" || exit $?
+        
+        for i in $(seq 0 "$2");
+        do
+            if [[ ! -d "$(printf "%s/$prob" "$cw_dir" "$i")" ]]
+            then
+                mkdir "$(printf "%s/$prob" "$cw_dir" "$i")"
+            fi
+        done
+
+        if [[ ! -d "$cw_dir/done" ]]
+        then
+            mkdir "$cw_dir/done"
+        fi
+    ;;
+    
+    d|data)
+        if [[ $# -lt 2 ]]
+        then
+            printf "Too few arguments provided. %s\n" "$help"
+            exit 1
+        fi
+
+        printf "Too it yourself, lazy bastard.\n"
+    ;;
+
+    c|cd)
+        printf "%s\n" "$(pwd)" > "$src_dir/dat/cw_dir"
+    ;;
+   
+    p|pwd)
+        printf "%s\n" "$cw_dir"
+    ;;
+
+    e|edit)
+        if [[ $# -lt 2 ]]
+        then
+            printf "Too few arguments provided. %s\n" "$help"
+            exit 1
+        fi
+
+        class="$(printf "$prog" "$2")"
+        dir="$(printf "$prob" "$2")"
+        target="$cw_dir/$dir/$class.java"
+
+        if [[ ! -f "$target" ]]
+        then
+            cw new "$2"
+        else
+            code "$target"
+        fi
+    ;;
+
+    t|test)
+        class="$(printf "$prog" "$2")"
+        dir="$(printf "$prob" "$2")"
+        target="$cw_dir/$dir/$class.java"
+        input_file="$cw_dir/$dir/$input"
+        output_file="$cw_dir/$dir/$output"
+        prog_output_file="$cw_dir/$dir/prog_$output"
+        submit="$cw_dir/done"
+
+        rm -f "$submit/*"
+        cp "$target" "$submit"
+
+        cd "$cw_dir/$dir" || exit
+        javac "$class.java"
+        java "$class" < "$input_file" > "$prog_output_file"
+        
+        delta="$(diff "$output_file" "$prog_output_file")"
+
+        if [[ "$delta" == "" ]]
+        then
+            printf "Sample data works.\n" 
+        else 
+            printf "%s\n" "$delta"
+        fi
+    ;;
+   
+    n|new)
+        if [[ $# -lt 2 ]]
+        then
+            printf "Too few arguments provided. %s\n" "$help"
+            exit 1
+        fi
+
+        class="$(printf "$prog" "$2")"
+        dir="$(printf "$prob" "$2")"
+        target="$cw_dir/$dir/$class.java"
+        nb_array=${*:3}
+
+        if [[ -f "$target" ]]
+        then
+            printf "'%s' already exists.\n" "$target"
+            exit 1
+        fi
+
+        cat "$src_dir/nb/_" > "$target"
+
+        for nb in $nb_array
+        do
+            file="$src_dir/nb/$nb"
+
+            if [[ ! -f "$file" ]]
+            then
+                printf "Notebook '%s' does not exist.\n" "$nb"
+            else
+                cat "$file" >> "$target"
+            fi
+        done
+        
+        cat "$src_dir/nb/__" >> "$target"
+
+        sed -i -e "s/@@/$class/g" "$target"
+
+        cw edit "$2"
+    ;;
+   
+    h|help)
+        cat "$src_dir/util/help.txt"
+    ;;
+
+    *)
+        printf "Command '%s' not found. %s\n" "$1" "$help"
+        exit 1
+    ;;
+esac

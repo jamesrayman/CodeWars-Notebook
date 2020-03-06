@@ -1,0 +1,17 @@
+public class @@ {
+    public static String reverse (String s) {
+        return new StringBuilder(s).reverse().toString();
+    }
+    public static <T> int indexOf (T[] v, T x) {
+        return Arrays.asList(v).indexOf(x);
+    }
+
+    static Scanner input;
+    static BufferedReader key;
+
+    public static void main (String [] args) throws Exception {
+        input = new Scanner(in);
+        key = new BufferedReader(new InputStreamReader(in));
+
+    }
+}

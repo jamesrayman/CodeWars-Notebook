@@ -1,0 +1,34 @@
+class CharMap {
+    public HashMap<Integer, HashMap<Integer, Character>> m = new HashMap<>();
+
+    public int minI = 1000000000, maxI = -minI, minJ = minI, maxJ = maxI;
+    public char blank = '.';
+
+    public char at (int i, int j) {
+        if (!m.containsKey(i)) return blank;
+        return m.get(i).getOrDefault(j, blank);
+    }
+    public void put (int i, int j, char c) {
+        minI = min(i, minI);
+        maxI = max(i, maxI);
+         
+        minJ = min(j, minJ);
+        maxJ = max(j, maxJ);
+         
+        if (!m.containsKey(i)) m.put(i, new HashMap<>());
+        m.get(i).put(j, c);
+    }
+
+    @Override
+    public String toString () {
+        String r = "";
+
+        for (int i = minI; i <= maxI; i++) {
+            for (int j = minJ; j <= maxJ; j++) {
+                r += at(i, j);
+            }
+            r += "\n";
+        }
+        return r;
+    }
+}

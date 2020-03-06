@@ -1,0 +1,4 @@
+class DateNames {
+    public static String [] weekdays = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" ");
+    public static String [] months = "January February March April May June July August September October November December".split(" ");
+}
