@@ -15,14 +15,8 @@ Presaved code for HP CodeWars. Thank you coronavirus for giving me more time to 
 
 # Template additions
 
+* `charmap`: character map print formatting
 * `date`: dates
 * `maze`: maze solving
-* `geom`: geometry
-* `graph`: graph algorithms
-* `knapsack`: knapsack
-* `roman`: roman numerals
-* `sort`: custom sorting
-* `euler`: number theory
-* `string`: string algorithms
-* `ufds`: union find
-* `vector`: sequence algorithms
+* `pair`: pair class
+* `unionfind`: union find

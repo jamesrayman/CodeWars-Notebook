@@ -65,3 +65,4 @@ class Maze {
         return d;
     }
 }
+

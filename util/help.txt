@@ -11,14 +11,8 @@ cw h[elp]           print help file
 
 Notebook additions
 
-date        dates
-maze        maze solving
-geom        geometry
-graph       graph algorithms
-knapsack    knapsack
-roman       roman numerals
-sort        custom sorting
-euler       number theory
-string      string algorithms
-ufds        union find
-vector      sequence algorithms
+charmap         character map print formatting
+date            dates
+maze            maze solving
+pair            pair class
+unionfind       union find

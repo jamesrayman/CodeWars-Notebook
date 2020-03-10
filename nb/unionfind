@@ -1,0 +1,52 @@
+class UnionFind {
+    public static class Element {
+        public int id;
+        public int p;
+        public int rank = 0;
+
+        public Element (int i) {
+            id = p = i;
+        }
+    };
+    ArrayList<Element> v = new ArrayList<>();
+
+    // make x the parent of y
+    void combine (Element x, Element y) {
+        y.p = x.id;
+    }
+
+    void makeSets (int n) {
+        for (int i = 0; i < n; i++)
+            v.add(new Element(i));
+    }
+    int find (int x) {
+        if (v.get(x).p != x) {
+            v.get(x).p = find(v.get(x).p);
+        }
+        return v.get(x).p;
+    }
+    Element at (int x) {
+        return v.get(find(x));
+    }
+    void join (int x, int y) {
+        x = find(x);
+        y = find(y);
+ 
+        if (x == y)
+            return;
+ 
+        if (v.get(x).rank < v.get(y).rank) {
+            int t = x;
+            x = y;
+            y = t;
+        }
+        if (v.get(x).rank == v.get(y).rank)
+            v.get(x).rank++;
+        
+        combine(v.get(x), v.get(y));
+    }
+    boolean joined (int x, int y) {
+        return find(x) == find(y);
+    }
+}
+

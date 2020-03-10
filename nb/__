@@ -5,6 +5,11 @@ public class @@ {
     public static <T> int indexOf (T[] v, T x) {
         return Arrays.asList(v).indexOf(x);
     }
+    public static void swap (Object a, Object b) {
+        Object t = a;
+        a = b;
+        b = t;
+    }
 
     static Scanner input;
     static BufferedReader key;
