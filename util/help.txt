@@ -1,12 +1,13 @@
 Commands 
 
-cw i[nit] x         create subdirectories for 'prob00' to 'probx' and set directory
-cw d[ata] path      extract data files from 'path'
-cw c[d]             set directory to current directory
+cw init x           create subdirectories for 'prob00' to 'probx' and set directory
+cw data path        extract data files from 'path'
+cw cd               set directory to current directory
 cw p[wd]            print directory
 cw e[dit] x         open 'probx'
 cw t[est] [x]       if 'x' is given 'cd x', test the current problem, clear './submit/' and move 'x' to that directory
 cw n[ew] x ...      if 'x' is given 'cd x', create a solution in the current directory with '...' as the notebook additions
+cw remove           remove everything in directory 'x'
 cw h[elp]           print help file
 
 Notebook additions

@@ -18,7 +18,7 @@ then
 fi
 
 case "$1" in
-    i|init)
+    init)
         if [[ $# -lt 2 ]]
         then
             printf "Too few arguments provided. %s\n" "$help"
@@ -41,7 +41,7 @@ case "$1" in
         fi
     ;;
     
-    d|data)
+    data)
         if [[ $# -lt 2 ]]
         then
             printf "Too few arguments provided. %s\n" "$help"
@@ -51,7 +51,7 @@ case "$1" in
         printf "Too it yourself, lazy bastard.\n"
     ;;
 
-    c|cd)
+    cd)
         printf "%s\n" "$(pwd)" > "$src_dir/dat/cw_dir"
     ;;
    
@@ -141,6 +141,24 @@ case "$1" in
         sed -i -e "s/@@/$class/g" "$target"
 
         cw edit "$2"
+    ;;
+
+    remove)
+        if [[ $# -lt 2 ]]
+        then
+            printf "Too few arguments provided. %s\n" "$help"
+            exit 1
+        fi
+
+        dir="$(printf "$prob" "$2")"
+        target="$cw_dir/$dir"
+
+        if [[ ! -d "$target" ]]
+        then
+            printf "Problem %d not found.\n" "$2"
+        else
+            rm -r "${target:?}/"*
+        fi
     ;;
    
     h|help)
