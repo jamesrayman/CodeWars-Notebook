@@ -1,6 +1,6 @@
 # CodeWars Notebook
 
-Presaved code for HP CodeWars. Thank you coronavirus for giving me more time to work on this.
+Presaved code for HP CodeWars.
 
 # Commands
 
