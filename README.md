@@ -2,6 +2,8 @@
 
 Presaved code for HP CodeWars.
 
+Note: this notebook has not been tested. I have never used it during competition and the repository is now archived.
+
 # Commands
 
 * `cw init x`: create subdirectories for `prob00` to `probx`
